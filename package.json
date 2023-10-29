@@ -1,0 +1,30 @@
+{
+  "name": "daily-mail-tech-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "video": "npx playwright test tests/video.spec.ts --workers=1",
+    "sport": "npx playwright test tests/sport.spec.ts --workers=1",
+    "cucumber-test": "node ./node_modules/.bin/cucumber-js -p default"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.39.0",
+    "@types/chai": "^4.3.9",
+    "@types/cucumber": "^7.0.0",
+    "@types/node": "^20.8.9"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^10.0.1",
+    "cucumber": "^6.0.7",
+    "cucumber-pretty": "^6.0.1",
+    "cucumber-tsflow": "^4.2.1",
+    "dotenv": "^16.3.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "type": "module"
+}
