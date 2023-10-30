@@ -147,19 +147,23 @@ class VideoPage extends BasePage {
     }
 
     async closeSmallVideo() {
+        let success: boolean = false;
         try {
             const locator: Locator = this.webElements.closeSmallVideoButton.locator as Locator;
             await locator.click({ timeout: 5000 });
             console.log(`Closed small video.`);
+            success = true;
         } catch (error) {
             console.error(`Failed closing small video`);
         }
-        try {
-            const footballLocator: Locator = this.page.locator('div.footballco-close-button');
-            await footballLocator.click({ timeout: 5000 });
-            console.log(`Closed football small video.`);
-        } catch (error) {
-            console.error(`Failed closing football small video`);
+        if (!success) {
+            try {
+                const footballLocator: Locator = this.page.locator('div.footballco-close-button');
+                await footballLocator.click({ timeout: 5000 });
+                console.log(`Closed football small video.`);
+            } catch (error) {
+                console.error(`Failed closing football small video`);
+            }
         }
     }
 
