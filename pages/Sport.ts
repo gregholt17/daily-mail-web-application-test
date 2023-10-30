@@ -17,7 +17,8 @@ class SportPage extends VideoPage {
     static async getPremierLeagueTable(
         page: SportPage | VideoPage
     ): Promise<PremierLeagueTable> {
-        await page.waitForPageLoad();
+        // await page.waitForPageLoad();
+        await page.pageSleep(2000);
         const premierLeagueTableLocator = page.page.locator('div[class^="competitionTable"]');
         const EHS: ElementHandle[] = await premierLeagueTableLocator.elementHandles();
         if (EHS.length === 0) {

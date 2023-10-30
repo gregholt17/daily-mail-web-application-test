@@ -92,7 +92,8 @@ class VideoPage extends BasePage {
         await this.initialiseBasePage();
         this.page = await this.context.newPage();
         await this.page.goto(this.VIDEO_PAGE_URL);
-        await this.waitForPageLoad();
+        // await this.waitForPageLoad();
+        await this.pageSleep(2000);
         this.initialisePageLocators();
         await this.cookiesGotIt();
     }
@@ -131,18 +132,34 @@ class VideoPage extends BasePage {
         try {
             const locator: Locator = this.webElements.closeSmallVideoButton.locator as Locator;
             await locator.waitFor({ state: "visible", timeout: 10000 });
+            return true;
         } catch (error) {
-            throw new Error(`Failed waiting for small video - Error:\n${error.message}`);
+            console.error(`Failed waiting for small video close button.`);
         }
+        try {
+            const footballLocator: Locator = this.page.locator('div.footballco-close-button');
+            await footballLocator.waitFor({ state: "visible", timeout: 10000 });
+            return true;
+        } catch (error) {
+            console.error(`Failed waiting for football small video close button.`);
+        }
+        return false;
     }
 
     async closeSmallVideo() {
         try {
             const locator: Locator = this.webElements.closeSmallVideoButton.locator as Locator;
-            await locator.click({ timeout: 10000 });
+            await locator.click({ timeout: 5000 });
             console.log(`Closed small video.`);
         } catch (error) {
-            throw new Error(`Failed closing small video - Error:\n${error.message}`);
+            console.error(`Failed closing small video`);
+        }
+        try {
+            const footballLocator: Locator = this.page.locator('div.footballco-close-button');
+            await footballLocator.click({ timeout: 5000 });
+            console.log(`Closed football small video.`);
+        } catch (error) {
+            console.error(`Failed closing football small video`);
         }
     }
 
