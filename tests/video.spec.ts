@@ -1,12 +1,13 @@
 import { test, expect, Browser, chromium } from '@playwright/test';
 import { VideoPageUtil } from '../utils/VideoPageUtil';
+import { BrowserStackUtil } from '../utils/BrowserStack';
 
 let browser: Browser;
 
 test.setTimeout(1000*60*30);
 
-test.beforeAll('Setup', async() => {
-    browser = await chromium.launch({ headless: false });
+test.beforeAll(async () => {
+    browser = await BrowserStackUtil.getBrowser();
 });
 
 test('Play Video', async () => {
@@ -47,6 +48,6 @@ test('Mute', async() => {
     await videoPage.closeContext();
 });
 
-test.afterAll('Cleanup', async() => {
+test.afterAll(async() => {
     await browser.close();
 });

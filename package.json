@@ -12,8 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.39.0",
-    "@types/chai": "^4.3.9",
+    "@playwright/test": "1.36.0",
     "@types/cucumber": "^7.0.0",
     "@types/node": "^20.8.9"
   },

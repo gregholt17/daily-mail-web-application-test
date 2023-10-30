@@ -139,7 +139,7 @@ class VideoPage extends BasePage {
     async closeSmallVideo() {
         try {
             const locator: Locator = this.webElements.closeSmallVideoButton.locator as Locator;
-            await locator.click({ timeout: 5000 });
+            await locator.click({ timeout: 10000 });
             console.log(`Closed small video.`);
         } catch (error) {
             throw new Error(`Failed closing small video - Error:\n${error.message}`);
@@ -149,7 +149,7 @@ class VideoPage extends BasePage {
     async scrollToMainVideo() {
         try {
             const locator: Locator = this.webElements.mainVideoDiv.locator as Locator;
-            await locator.scrollIntoViewIfNeeded({ timeout: 5000 });
+            await locator.scrollIntoViewIfNeeded({ timeout: 10000 });
         } catch (error) {
             throw new Error(`Failed scrolling main video into view - Error:\n${error.message}`);
         }
@@ -158,7 +158,7 @@ class VideoPage extends BasePage {
     async playMainVideoViaBigButton() {
         try {
             const locator: Locator = this.webElements.mainVideoBigPlayButton.locator as Locator;
-            await locator.click({ timeout: 5000 });
+            await locator.click({ timeout: 10000 });
         } catch (error) {
             throw new Error(`Failed playing main video - Error:\n${error.message}`);
         }
@@ -167,7 +167,8 @@ class VideoPage extends BasePage {
     async toggleMainVideoPlayback() {
         try {
             const locator: Locator = this.webElements.mainVideoPlayPauseVideoButton.locator as Locator;
-            await locator.click({ timeout: 5000 });
+            await locator.click({ timeout: 10000 });
+            console.log(`Toggled main video playback.`);
         } catch (error) {
             throw new Error(`Failed pausing main video - Error:\n${error.message}`);
         }
@@ -176,7 +177,8 @@ class VideoPage extends BasePage {
     async playMainVideoNextVideo() {
         try {
             const locator: Locator = this.webElements.mainVideoNextVideoButton.locator as Locator;
-            await locator.click({ timeout: 5000 });
+            await locator.click({ timeout: 10000 });
+            console.log(`Selected next video.`);
         } catch (error) {
             throw new Error(`Failed playing next video - Error:\n${error.message}`);
         }
@@ -189,7 +191,7 @@ class VideoPage extends BasePage {
     async getVideoTitle() {
         try {
             await this.waitForVideoTitle();
-            const videoTitle = await this.videoTitleLocator.innerText({ timeout: 5000 });
+            const videoTitle = await this.videoTitleLocator.innerText({ timeout: 10000 });
             return videoTitle;
         } catch (error) {
             throw new Error(`Failed getting video title - Error:\n${error.message}`);
@@ -199,7 +201,8 @@ class VideoPage extends BasePage {
     async playMainVideoPreviousVideo() {
         try {
             const locator: Locator = this.webElements.mainVideoPreviousVideoButton.locator as Locator;
-            await locator.click({ timeout: 5000 });
+            await locator.click({ timeout: 10000 });
+            console.log(`Selected previous video.`);
         } catch (error) {
             throw new Error(`Failed playing previous video - Error:\n${error.message}`);
         }
@@ -249,7 +252,7 @@ class VideoPage extends BasePage {
                 .locator('li')
                 .filter({ hasText: 'Sport' })
                 .first();
-            await locator.click({ timeout: 5000 });
+            await locator.click({ timeout: 10000 });
         } catch (error) {
             throw new Error(`Failed selecting sport page - Error:\n${error.message}`);
         }

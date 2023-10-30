@@ -13,12 +13,57 @@ opt to install Playwright browsers if asked. Otherwise run:
 
 ## 4. Create Environment Variable .env File
 Configure .env file for Environment Variables:
-`PREMIER_LEAGUE_TEAM` - For the sport test enter one of: "Tottenham" | "Man City" | "Arsenal" | "Liverpool" |
+
+`EXECUTION_TYPE`
+
+Determines whether tests run locally or on BrowserStack. Allowed: 'LOCAL' / 'BROWSERSTACK' (case insensitive). Default: 'LOCAL' if not specified.
+
+`EXECUTION_HEADLESS`
+
+Determines whether tests run in headless mode or not. Allowed: 'TRUE' / 'FALSE' (case insensitive) (converted to boolean before export) Default: 'TRUE'/true if not specified.
+
+`BROWSERSTACK_USER_BROWSER_TYPE`
+
+Allowed: 'chrome', 'edge', 'playwright-chromium', 'playwright-firefox' and 'playwright-webkit'. Default: 'chrome' if not specified.
+
+`BROWSERSTACK_USER_OS`
+
+Default: 'osx' if not specified.
+
+`BROWSERSTACK_USER_OS_VERSION`
+
+BrowserStack OS Version. Default: 'catalina' if not specified.
+
+`BROWSERSTACK_USER_NAME`
+
+BrowserStack Name. Default: 'My first playwright test' if not specified.
+
+`BROWSERSTACK_USER_BUILD`
+
+BrowserStack Build. Default: 'playwright-build-1' if not specified.
+
+`BROWSERSTACK_USERNAME`
+
+BrowserStack Username.
+
+`BROWSERSTACK_ACCESS_KEY`
+
+BrowserStack Access Key.
+
+`PREMIER_LEAGUE_TEAM`
+
+For the sport test enter one of: "Tottenham" | "Man City" | "Arsenal" | "Liverpool" |
     "Aston Villa" | "Newcastle" | "Brighton" | "Man Utd" | "West Ham" | 
     "Chelsea" | "Crystal Palace" | "Wolves" | "Fulham" | "Brentford" | "Nottm Forest"
     | "Everton" | "Luton" | "Burnley" | "Bournemouth" | "Sheff Utd"
-`PREMIER_LEAGUE_TEAM_EXPECTED_POSITION` - If defined an assertion is performed against the chosen teams position.
-`PREMIER_LEAGUE_TEAM_EXPECTED_POINTS` - If defined an assertion is performed against the chosen teams points.
+
+`PREMIER_LEAGUE_TEAM_EXPECTED_POSITION`
+
+If defined an assertion is performed against the chosen teams position.
+
+`PREMIER_LEAGUE_TEAM_EXPECTED_POINTS`
+
+If defined an assertion is performed against the chosen teams points.
 
 ## 5. Run Playwright Scripts
 ```npm run video```

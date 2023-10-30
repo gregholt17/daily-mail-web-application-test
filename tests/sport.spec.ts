@@ -3,8 +3,10 @@ import { SportPage } from '../pages/Sport';
 import { PremierLeagueUtil } from '../utils/PremierLeague';
 import { PremierLeagueTableTeamStats, PremierLeagueTeamName } from '../types/Sport';
 import { ENV_VARS } from '../env';
+import { BrowserStackUtil } from '../utils/BrowserStack';
 
-const { PREMIER_LEAGUE_TEAM_NAME,
+const {
+    PREMIER_LEAGUE_TEAM_NAME,
     PREMIER_LEAGUE_TEAM_EXPECTED_POINTS,
     PREMIER_LEAGUE_TEAM_EXPECTED_POSITION } = ENV_VARS;
 
@@ -15,8 +17,11 @@ let sportPage: SportPage;
 
 test.setTimeout(1000*60*60*30);
 
+test.beforeAll(async () => {
+    browser = await BrowserStackUtil.getBrowser()
+});
+
 test('Sport Page', async () => {
-    browser = await chromium.launch({ headless: false });
     sportPage = new SportPage(browser);
     await sportPage.initialiseSportPage();
     const premierLeagueTeamStats: PremierLeagueTableTeamStats = 
@@ -33,7 +38,7 @@ test('Sport Page', async () => {
     }
 });
 
-test.afterAll('Cleanup', async () => {
+test.afterAll(async () => {
     await sportPage.closeContext();
     await sportPage.closeBrowser();
 });
